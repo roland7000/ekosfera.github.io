@@ -1,0 +1,14 @@
+{
+  "Sponsors": "Sponsors",
+  "Reports": "Reports",
+  "Submit a new report": "Submit a new report",
+  "All Reports": "All Reports",
+  "Successfully completed": "Successfully completed",
+  "More Information": "More Information",
+  "Location": "Location",
+  "Loading": "Loading...",
+  "Search Places": "Search Places ...",
+  "Damage": "Damage value: {{ value }} {{ measure }}",
+  "More information": "More information >",
+  "Coordinates": "Coordinates"
+}

@@ -1,0 +1,22 @@
+.marker {
+  border-radius: 50%;
+  border: 2px solid #fff;
+  font-size: 14px;
+  color: #fff;
+  min-width: 36px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-align: center;
+}
+
+.cluster {
+  background-color: rgba(244, 67, 54, .8);
+}
+
+.single {
+  background-color: rgba(244, 67, 54, 0.54);
+  text-shadow: 1px 1px #cf836d;
+}

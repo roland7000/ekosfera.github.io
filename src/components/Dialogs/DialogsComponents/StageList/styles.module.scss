@@ -1,0 +1,61 @@
+@import "../../../../utils/variables.scss";
+
+.stage_list {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    padding: 5px 0 5px 28px;
+
+    &:first-child {
+      &:after {
+        top: 50%;
+      }
+    }
+
+    &:last-child {
+      &:before {
+        left: 0;
+        width: 18px;
+        height: 18px;
+        background-color: $white;
+        border: 3px solid $orange;
+      }
+
+      &:after {
+        background-color: $orange;
+        bottom: 50%;
+        left: 8px;
+      }
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 2px;
+      width: 14px;
+      height: 14px;
+      margin-right: 14px;
+      border-radius: 50%;
+      background-color: $green2;
+      transform: translateY(-50%);
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 8px;
+      width: 2px;
+      background-color: $stage-list-line-bg;
+    }
+  }
+}

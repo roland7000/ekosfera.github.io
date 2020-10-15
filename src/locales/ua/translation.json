@@ -1,0 +1,14 @@
+{
+  "Sponsors": "Спонсори",
+  "Reports": "Порушення",
+  "Submit a new report": "Оформити порушення",
+  "All Reports": "Всі порушення",
+  "Successfully completed": "Успішно завершені",
+  "More Information": "Більше інформації",
+  "Location": "Розташування",
+  "Loading": "Йде завантаження...",
+  "Search Places": "Шукати місця ...",
+  "Damage": "Масштаб ущербу: {{ value }} {{ measure }}",
+  "More information": "Більше інформації >",
+  "Coordinates": "Координати"
+}
