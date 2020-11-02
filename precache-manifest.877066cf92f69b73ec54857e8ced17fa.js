@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4e15490103923b51894ce42663b64816",
+    "revision": "6d3517cbc9eeaf4c61f392da2a0abf0d",
     "url": "/ekosfera.github.io/index.html"
   },
   {
-    "revision": "88f82fc45efb7dc0a180",
-    "url": "/ekosfera.github.io/static/css/main.8c599f5c.chunk.css"
+    "revision": "46a8adc9ac18fea45dbb",
+    "url": "/ekosfera.github.io/static/css/main.e4b7dea8.chunk.css"
   },
   {
-    "revision": "4b2cd9ce188233febffa",
-    "url": "/ekosfera.github.io/static/js/2.de02c2dc.chunk.js"
+    "revision": "f03969ea6ecbc08c4d53",
+    "url": "/ekosfera.github.io/static/js/2.972cdff9.chunk.js"
   },
   {
     "revision": "876e403427d7be82fb4e8ac24123aaf3",
-    "url": "/ekosfera.github.io/static/js/2.de02c2dc.chunk.js.LICENSE.txt"
+    "url": "/ekosfera.github.io/static/js/2.972cdff9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "88f82fc45efb7dc0a180",
-    "url": "/ekosfera.github.io/static/js/main.bd3283ca.chunk.js"
+    "revision": "46a8adc9ac18fea45dbb",
+    "url": "/ekosfera.github.io/static/js/main.b5be103a.chunk.js"
   },
   {
     "revision": "7ebde046b49fe17f74c9",

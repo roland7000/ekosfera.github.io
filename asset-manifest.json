@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/ekosfera.github.io/static/css/main.8c599f5c.chunk.css",
-    "main.js": "/ekosfera.github.io/static/js/main.bd3283ca.chunk.js",
-    "main.js.map": "/ekosfera.github.io/static/js/main.bd3283ca.chunk.js.map",
+    "main.css": "/ekosfera.github.io/static/css/main.e4b7dea8.chunk.css",
+    "main.js": "/ekosfera.github.io/static/js/main.b5be103a.chunk.js",
+    "main.js.map": "/ekosfera.github.io/static/js/main.b5be103a.chunk.js.map",
     "runtime-main.js": "/ekosfera.github.io/static/js/runtime-main.e8798083.js",
     "runtime-main.js.map": "/ekosfera.github.io/static/js/runtime-main.e8798083.js.map",
-    "static/js/2.de02c2dc.chunk.js": "/ekosfera.github.io/static/js/2.de02c2dc.chunk.js",
-    "static/js/2.de02c2dc.chunk.js.map": "/ekosfera.github.io/static/js/2.de02c2dc.chunk.js.map",
+    "static/js/2.972cdff9.chunk.js": "/ekosfera.github.io/static/js/2.972cdff9.chunk.js",
+    "static/js/2.972cdff9.chunk.js.map": "/ekosfera.github.io/static/js/2.972cdff9.chunk.js.map",
     "index.html": "/ekosfera.github.io/index.html",
-    "precache-manifest.cc7523f63e7e41d62d81a1f3bb338f59.js": "/ekosfera.github.io/precache-manifest.cc7523f63e7e41d62d81a1f3bb338f59.js",
+    "precache-manifest.877066cf92f69b73ec54857e8ced17fa.js": "/ekosfera.github.io/precache-manifest.877066cf92f69b73ec54857e8ced17fa.js",
     "service-worker.js": "/ekosfera.github.io/service-worker.js",
-    "static/css/main.8c599f5c.chunk.css.map": "/ekosfera.github.io/static/css/main.8c599f5c.chunk.css.map",
-    "static/js/2.de02c2dc.chunk.js.LICENSE.txt": "/ekosfera.github.io/static/js/2.de02c2dc.chunk.js.LICENSE.txt",
+    "static/css/main.e4b7dea8.chunk.css.map": "/ekosfera.github.io/static/css/main.e4b7dea8.chunk.css.map",
+    "static/js/2.972cdff9.chunk.js.LICENSE.txt": "/ekosfera.github.io/static/js/2.972cdff9.chunk.js.LICENSE.txt",
     "static/media/icon-image.69f3d863.svg": "/ekosfera.github.io/static/media/icon-image.69f3d863.svg",
     "static/media/placeholder.png": "/ekosfera.github.io/static/media/placeholder.d29a82cf.png"
   },
   "entrypoints": [
     "static/js/runtime-main.e8798083.js",
-    "static/js/2.de02c2dc.chunk.js",
-    "static/css/main.8c599f5c.chunk.css",
-    "static/js/main.bd3283ca.chunk.js"
+    "static/js/2.972cdff9.chunk.js",
+    "static/css/main.e4b7dea8.chunk.css",
+    "static/js/main.b5be103a.chunk.js"
   ]
 }
