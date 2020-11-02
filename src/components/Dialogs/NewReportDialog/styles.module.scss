@@ -7,9 +7,32 @@
     margin: auto;
     background-color: #fff;
     border-radius: 6px;
-    width: 90%;
-    max-width: 600px;
+    width: 100%;
+    max-width: 750px;
     box-shadow: 0px 39px 18px -24px rgba(0, 0, 0, 0.12%), 0px 4px 18px 0px rgba(0, 0, 0, 0.44%);
+    max-height: calc(100vh - 40px);
+  }
+
+  &-footer {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    @media only screen and (max-width: 768px) {
+      padding: 10px 30px 20px;
+      justify-content: flex-start;
+
+      button {
+        margin-top: 10px;
+        margin-right: 20px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
   }
 
   &-background {
@@ -30,17 +53,22 @@
     bottom: 0;
     left: 0;
     display: flex;
+    padding: 20px;
   }
 
   &-content {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     padding: 0 30px 20px;
-    
+    overflow: auto;
+
+    @media only screen and (max-width: 768px) {
+      background: #f6f6f6;
+    }
+
     &-close_pane {
-      padding: 10px;
+      padding: 20px;
     }
 
     &-close_btn {
@@ -50,7 +78,7 @@
       height: 36px;
       border-radius: 6px;
       cursor: pointer;
-      
+
       &-wrap {
         width: 100%;
         display: flex;
@@ -92,8 +120,8 @@
     }
 
     &-stage {
-     margin: 0;
-     padding: 10px 0;
+      margin: 0;
+      padding: 10px 0;
     }
 
     &-tag_list {
@@ -104,53 +132,285 @@
 }
 
 .form {
-  &_body {
+  &_left-block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
 
+    @media only screen and (min-width: 769px) {
+      width: 60%;
+      padding-right: 50px;
+    }
+  }
+
+  &_right-block {
+    display: flex;
+    flex-direction: column;
+
+    @media only screen and (min-width: 769px) {
+      width: 40%;
+    }
+  }
+
+  &_body {
+    display: flex;
+    justify-content: space-between;
+
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+    }
   }
 
   &_title {
+    margin: 0;
+    font-weight: 600;
 
+    &-wrap {
+      display: flex;
+      flex-direction: column;
+      margin-left: 10px;
+    }
   }
 
   &_subtitle {
-    
+    margin: 0 0 10px;
+    font-weight: 300;
+
+    @media only screen and (max-width: 768px) {
+      margin: 10px 0 10px;
+    }
+  }
+
+  &_required-label {
+    font-size: 12px;
+    font-weight: 300;
+    margin: 0;
   }
 
   &_field {
+    display: flex;
+    flex-direction: column;
 
     &-user {
-
+      margin-top: 10px;
     }
 
     &-tags {
-
     }
- 
-    &-attachments {
 
+    &-attachments {
+      margin-top: 10px;
+      display: flex;
+
+      &-uploader {
+        > div {
+          background-color: transparent;
+          border: none;
+          padding: 0;
+          box-shadow: none;
+          margin: 0;
+
+          button {
+            margin: 0 !important;
+          }
+        }
+      }
+
+      &_body {
+        font-family: "Open Sans", sans-serif;
+      }
+
+      &-list {
+        display: inline-flex;
+        flex-direction: column;
+        list-style-type: none;
+        margin: 0;
+        margin-bottom: 10px;
+        padding: 0;
+
+        &_item {
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+
+          &-name {
+            font-weight: 300;
+            font-size: 12px;
+            margin: 0;
+            margin-right: 10px;
+          }
+
+          &-handler {
+            flex-shrink: 0;
+            padding: 0;
+            margin: 0;
+            margin-left: auto;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            padding: 2px 4px;
+          }
+        }
+
+        &_icon {
+          flex-shrink: 0;
+          width: 24px;
+          height: 22px;
+          margin-right: 10px;
+        }
+      }
     }
 
     &-input {
+      width: 100%;
+      width: 250px;
+      padding: 6px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      border: none;
+      border-bottom: 2px solid #dbdbdb;
+      background-color: transparent;
+
+      &_error {
+        border-bottom-color: #f97369;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
 
       &:hover {
-
       }
 
       &:active {
-
       }
 
       &:focus {
+        border-bottom-color: #5eb166;
+      }
+    }
 
+    &-tagList {
+      padding: 0;
+      margin: 0 -4px;
+    }
+
+    &-map {
+      position: relative;
+      width: 100%;
+      height: 400px;
+
+      &_search {
+        width: 100%;
+      }
+
+      &_center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 111;
+        width: 23px;
+        height: 23px;
+        transform: translate(-50%, -50%);
+
+        &:after,
+        &:before {
+          content: "";
+          position: absolute;
+          background: red;
+        }
+
+        &:before {
+          left: 10px;
+          width: 3px;
+          height: 100%;
+        }
+
+        &:after {
+          top: 10px;
+          width: 100%;
+          height: 3px;
+        }
       }
     }
   }
 
   &-step-indicator {
-
   }
 
   &-next-button {
+  }
 
+  &_loacaiton-search-input {
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+  &_loacaiton-search-input-wrap {
+    display: flex;
+
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &_latlon-caption {
+    margin-left: auto;
+  }
+}
+
+.upload {
+  &-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+  &-list {
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    flex-direction: column;
+
+    &_item {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      margin-bottom: 10px;
+
+      &-icon {
+        width: 26px;
+        height: 22px;
+        margin-right: 10px;
+        flex-shrink: 0;
+      }
+      &-name {
+        margin-right: 10px;
+        font-size: 12px;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        flex-grow: 1;
+        text-overflow: ellipsis;
+        margin: 0;
+        white-space: nowrap;
+      }
+      &-handler {
+        padding: 4px 8px;
+        margin: 0;
+        color: #f97369;
+        background: transparent;
+        border: none;
+        margin-left: auto;
+        flex-shrink: 0;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+  }
+  &-button {
+    margin: 10px auto 0;
   }
 }

@@ -8,6 +8,7 @@ const Button = ({
   handleClick,
   className,
   children,
+  disabled,
   link,
 }) => (
   <button
@@ -16,7 +17,8 @@ const Button = ({
       className,
       {
         [styles['button__primary']]: isPrimary,
-        [styles['button__link']]: link
+        [styles['button__link']]: link,
+        [styles['button__disabled']]: disabled
       }
     )}
     onClick={handleClick}

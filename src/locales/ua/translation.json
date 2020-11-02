@@ -10,5 +10,12 @@
   "Search Places": "Шукати місця ...",
   "Damage": "Масштаб ущербу: {{ value }} {{ measure }}",
   "More information": "Більше інформації >",
-  "Coordinates": "Координати"
+  "Coordinates": "Координати",
+  "namePlaceholder": "Ваше ім'я",
+  "nameError": "Ім'я не повинно містити спеціальних символів",
+  "emailPlaceholder": "Ваш E-mail",
+  "emailError": "Введена E-mail адреса не правильна",
+  "addPhoto": "Додайте фото зафіксованого порушення",
+  "addPhotoError": "Не вдалось завантажити зображення",
+  "chooseCategory": "Виберіть категорії, котрі описують порушення"
 }

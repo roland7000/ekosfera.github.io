@@ -1,7 +1,8 @@
 {
   "name": "ekosfera.github.io",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "https://pvolodymyr.github.io/ekosfera.github.io/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -9,12 +10,17 @@
     "axios": "^0.20.0",
     "classnames": "^2.2.6",
     "embla-carousel": "^4.0.5",
+    "gh-pages": "^3.0.0",
     "google-map-react": "^2.0.8",
     "i18next": "^19.7.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-geocode": "^0.2.2",
     "react-i18next": "^9.0.10",
+    "react-images-upload": "^1.2.8",
+    "react-images-uploading": "^3.1.2",
+    "react-multiple-image-input": "^1.0.0",
     "react-places-autocomplete": "^7.3.0",
     "react-redux": "^7.2.1",
     "react-scripts": "3.4.3",
@@ -31,7 +37,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

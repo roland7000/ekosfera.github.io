@@ -1,10 +1,14 @@
 import API from '../../utils/API';
+import Geocode from '../../utils/geocode';
 
 import {
   URL_INCIDENTS,
   GET_INCIDENTS_LOADING,
   GET_INCIDENTS_COMPLETE,
-  GET_INCIDENTS_ERROR
+  GET_INCIDENTS_ERROR,
+  SET_INCIDENTS_LOCATION_LOADING,
+  SET_INCIDENTS_LOCATION_COMPLETE,
+  SET_INCIDENTS_LOCATION_ERROR
 } from '../../constants';
 
 // TODO: remove this after new API comes...
@@ -37,4 +41,25 @@ export const getIncidents = () => dispatch => {
       type: GET_INCIDENTS_ERROR,
       payload: error
     }))
+}
+
+export const setIncidentLocation = latlon => dispatch => {
+  const [lat, lng] = latlon.split(', ');
+  if (!latlon || !lat || !lng) return
+
+  dispatch({
+    type: SET_INCIDENTS_LOCATION_LOADING,
+    payload: ''
+  })
+
+  Geocode.fromLatLng(lat, lng).then(
+    response => dispatch({
+      type: SET_INCIDENTS_LOCATION_COMPLETE,
+      payload: response.results[0].formatted_address
+    }),
+    error => dispatch({
+      type: SET_INCIDENTS_LOCATION_ERROR,
+      payload: error
+    })
+  );
 }

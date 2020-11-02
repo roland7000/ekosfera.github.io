@@ -58,7 +58,7 @@ const MapMarker = ({
         onClick={handleClick}
         style={style}
       >
-        {value}
+        <span>{value}</span>
       </div>
     </Marker >
   )

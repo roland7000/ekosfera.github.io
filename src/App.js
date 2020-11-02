@@ -55,7 +55,7 @@ function App() {
       <Reports />
       <InfoDialog />
       <DetailsDialog />
-      {/* <ReportDialog /> */}
+      <ReportDialog />
     </div>
   );
 }

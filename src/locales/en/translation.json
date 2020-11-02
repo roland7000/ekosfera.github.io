@@ -10,5 +10,12 @@
   "Search Places": "Search Places ...",
   "Damage": "Damage value: {{ value }} {{ measure }}",
   "More information": "More information >",
-  "Coordinates": "Coordinates"
+  "Coordinates": "Coordinates",
+  "namePlaceholder": "Your name",
+  "nameError": "The name must not contain special characters",
+  "emailPlaceholder": "Your E-mail",
+  "emailError": "The entered E-mail address is incorrect",
+  "addPhoto": "Add a photo of the recorded violation",
+  "addPhotoError": "Failed to load image",
+  "chooseCategory": "Select categories that describe violations"
 }

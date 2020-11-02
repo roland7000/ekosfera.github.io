@@ -7,9 +7,24 @@
   flex-wrap: wrap;
   align-items: flex-start;
 
+  &_select {
+    .tag-list_item {
+      background-color: #fff;
+      color: #f97369;
+      border-radius: 4px;
+      border: 2px solid #f97369;
+      cursor: pointer;
+
+      &-selected {
+        background-color: #f97369;
+        color: #fff;
+      }
+    }
+  }
+
   &_item {
     padding: 3px 10px;
-    background-color: #f44336c2;
+    background-color: #f97369;
     border-radius: 4px;
     color: #fff;
     font-weight: 600;

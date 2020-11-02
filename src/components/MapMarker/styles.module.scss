@@ -1,4 +1,5 @@
 .marker {
+  position: relative;
   border-radius: 50%;
   border: 2px solid #fff;
   font-size: 14px;
@@ -10,6 +11,28 @@
   justify-content: center;
   cursor: pointer;
   text-align: center;
+
+  span {
+    position: absolute;
+    top: -30px;
+    text-align: center;
+    white-space: nowrap;
+    background: #e9967e;
+    padding: 1px 4px;
+    border-radius: 2px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: calc(50% - 8px);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 8px 0 8px;
+      border-color: #e9967e transparent transparent transparent;
+    }
+  }
 }
 
 .cluster {

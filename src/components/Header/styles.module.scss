@@ -1,6 +1,7 @@
 @import "../../utils/variables.scss";
 
 .header {
+  position: relative;
   display: flex;
   align-items: center;
   flex-grow: 1;
@@ -21,23 +22,85 @@
     height: auto;
     flex-shrink: 0;
   }
-
-  &_list {
+  &_menu {
     display: flex;
-    align-items: center;
-    list-style-type: none;
-    padding: 0;
-    margin: 0 20px 0 auto;
+    margin-left: auto;
+    
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+      padding: 20px;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      z-index: 100;
+      display: none;
 
-    li {
-      padding: 0 18px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
+      &--is-open {
+        display: flex;
+      }
     }
 
     &_button {
-      cursor: pointer;
+      background: transparent;
+      width: 24px;
+      display: flex;
+      flex-direction: column;
+      border: 0;
+      padding: 0;
+      margin-left: auto;
+
+      @media only screen and (min-width: 769px) {
+        display: none;
+      }
+
+      span {
+        height: 3px;
+        width: 100%;
+        margin-bottom: 4px;
+        background: #333;
+      }
     }
+
+    &_list {
+      display: flex;
+      align-items: center;
+      list-style-type: none;
+      padding: 0;
+      margin: 0 20px 0 auto;
+
+      li {
+        padding: 0 18px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      &_button {
+        cursor: pointer;
+      }
+
+      @media only screen and (max-width: 768px) {
+        width: 100%;
+        flex-direction: column;
+
+        li {
+          width: 100%;
+          padding: 10px 0;
+          margin: 10px 0;
+          text-align: center;
+        }
+
+        &_button {
+          width: 100%;
+          max-width: 320px;
+          margin: 0 auto 20px ;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
   }
 }

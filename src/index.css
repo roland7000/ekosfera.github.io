@@ -8,3 +8,13 @@ body {
   margin: 0;
   font-family: 'Open Sans';
 }
+
+button:hover,
+button:focus,
+button:active {
+  outline: none;
+}
+
+.gm-fullscreen-control {
+  display: none !important;
+}

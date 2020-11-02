@@ -6,12 +6,12 @@ import {
   MAP_DEFAULT_ZOOM
 } from '../../constants';
 
-function Map({
-  center = MAP_DEFAULT_CENTER,
+const MapWithCenter = ({
+  center,
   handleChange,
   className,
   children
-}) {
+}) => {
   const mapRef = useRef()
 
   useEffect(() => {
@@ -34,4 +34,4 @@ function Map({
   );
 }
 
-export default Map;
+export default MapWithCenter;
