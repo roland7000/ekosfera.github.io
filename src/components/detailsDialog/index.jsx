@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 
 import styles from './styles.module.scss';
-import getStylesByCoordinates from '../../helpers/getStylesByCoordinates';
 
 // Action Creators
 import { setDetailsDialogClosed } from '../../store/actions/dialog.actions';
@@ -16,12 +15,6 @@ function Dialog() {
   const dispatch = useDispatch();
 
   if (!open || !content || !coordinates) return null;
-
-  const {
-    isDialogPositionedToTop,
-    isDialogPositionedToRight,
-    ...restStyles
-  } = getStylesByCoordinates(coordinates, { width: 200 });
 
   const handleDialogClose = () => {
     dispatch(setDetailsDialogClosed())

@@ -14,10 +14,6 @@ function Map({
 }) {
   const mapRef = useRef()
 
-  useEffect(() => {
-    console.log('useEffect center:', center)
-  }, [center])
-
   return (
     <GoogleMapReact
       bootstrapURLKeys={{ key: GOOGLE_MAPS_API }}

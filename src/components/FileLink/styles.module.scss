@@ -1,3 +1,13 @@
 .link {
-  
+  display: flex;
+
+  &_icon {
+    height: auto;
+    width: 20px;
+    margin-right: 10px;
+  }
+
+  &_text {
+    font-size: 12px;
+  }
 }

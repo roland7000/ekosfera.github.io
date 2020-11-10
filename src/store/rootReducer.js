@@ -6,6 +6,7 @@ import newReportReducer from './reducers/newReportDialog.reducer';
 import incidentsReducer from './reducers/incidents.reducer';
 import tagsReducer from './reducers/tags.reducer';
 import reportReducer from './reducers/report.reducer';
+import filterReducer from './reducers/filter.reducer';
 
 const rootReducer = combineReducers({
   detailsDialog: detailsDialogReducer,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   incidents: incidentsReducer,
   reportDialog: newReportReducer,
   report: reportReducer,
-  tags: tagsReducer
+  tags: tagsReducer,
+  filter: filterReducer
 })
 
 export default rootReducer;

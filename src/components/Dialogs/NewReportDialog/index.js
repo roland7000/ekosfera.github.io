@@ -4,6 +4,7 @@ import styles from './styles.module.scss';
 
 // Hooks
 import { useSelector, useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next';
 
 // Components
 import ClosePane from '../DialogsComponents/ClosePane';
@@ -17,6 +18,7 @@ import { getTags } from '../../../store/actions/tags.actions';
 import { formPostReport, formPostPhotos } from '../../../store/actions/report.action';
 
 function Dialog() {
+  const [t] = useTranslation();
   const [isButtonNextClicked, setButtonNextClicked] = useState(false)
   const [showStepTwo, setShowStepTwo] = useState(false)
   const { open } = useSelector(state => state.reportDialog)
@@ -36,7 +38,10 @@ function Dialog() {
     formImagesLoading,
     formImagesError,
     formNameError,
-    formEmailError
+    formEmailError,
+    formSubmittedSuccessfully,
+    formSubmitLoading,
+    formSubmitError
   } = useSelector(state => state.report);
 
   const isImagesUrlsLoaded = attachments.length === images.length
@@ -46,8 +51,10 @@ function Dialog() {
     !formImagesError &&
     !formNameError &&
     !formEmailError &&
+    images &&
+    images.length &&
     fullName &&
-    tags.length && 
+    tags.length &&
     email &&
     tags
 
@@ -80,7 +87,7 @@ function Dialog() {
       setButtonNextClicked(true)
       dispatch(formPostPhotos(images))
     } else {
-      setShowStepTwo(true)
+      isStepOneReady && setShowStepTwo(true)
     }
   }
   const handleClickBack = () => setShowStepTwo(false)
@@ -88,7 +95,7 @@ function Dialog() {
   const handleSendForm = () => {
     if (isFormReady) dispatch(formPostReport({
       locationData: [
-        { latlon: locationData.lat + ', ' + locationData.lng }
+        { latlon: locationData[0].lat + ', ' + locationData[0].lng }
       ],
       attachments,
       reporter: {
@@ -100,10 +107,10 @@ function Dialog() {
     }))
   }
 
+  console.log('formSubmittedSuccessfully', formSubmittedSuccessfully)
+
   return (
-    <div
-      className={styles['dialog_report-wrapper']}
-    >
+    <div className={styles['dialog_report-wrapper']}>
       <div className={styles['dialog_report-background']} onClick={handleDialogClose} />
       <div
         className={styles['dialog_report-body']}
@@ -114,19 +121,39 @@ function Dialog() {
           className={styles['dialog_report-content-close_pane']}
         >
           <div className={styles['form_title-wrap']}>
-            <h3 className={styles['form_title']}>Заповніть форму звіту про порушення</h3>
-            <h4 className={styles['form_required-label']}>* поля обов'язкові до заповнення</h4>
+            <h3 className={styles['form_title']}>{t('formTitle')}</h3>
+            <h4 className={styles['form_required-label']}>{t('required')}</h4>
           </div>
         </ClosePane>
         <div className={styles['dialog_report-content']}>
-          {showStepTwo ? <StepTwo /> : <StepOne />}
+          {!formSubmitError && !formSubmittedSuccessfully && showStepTwo ? <StepTwo /> : <StepOne />}
+          {formSubmittedSuccessfully && <div className={styles['dialog_report-content_message']}>{t('formSubmitSuccess')}</div>}
+          {formSubmitError && <div className={styles['dialog_report-content_message']}>{t('formSubmitError')}</div>}
+          {(formImagesLoading || formSubmitLoading) &&
+            <div className={styles.loader}>
+              <div className={styles['lds-spinner']}>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          }
         </div>
         <div className={styles['dialog_report-footer']}>
-          {showStepTwo ? <>
-            <Button
-              handleClick={handleClickBack}
-              isPrimary
-            >
+          {!formSubmitError && !formSubmittedSuccessfully && (
+            <span className={styles['dialog_report-footer_step']}>{t('step')}: {showStepTwo ? '2' : '1'}</span>
+          )}
+          {!formSubmitError && !formSubmittedSuccessfully && showStepTwo ? <>
+            <Button handleClick={handleClickBack}>
               Назад
             </Button>
             <Button
@@ -134,18 +161,26 @@ function Dialog() {
               disabled={!isFormReady}
               isPrimary
             >
-              Відправити
+              {t('submit')}
             </Button>
           </> : null}
-          {!showStepTwo ? (
+          {!formSubmitError && !formSubmittedSuccessfully && !showStepTwo ? (
             <Button
               handleClick={handleClickNext}
               disabled={!isStepOneReady}
               isPrimary
             >
-              Далі
+              {t('next')}
             </Button>
           ) : null}
+          {(formSubmitError || formSubmittedSuccessfully) && (
+            <Button
+              handleClick={handleDialogClose}
+              isPrimary
+            >
+              {t('close')}
+            </Button>
+          )}
         </div>
       </div>
     </div>

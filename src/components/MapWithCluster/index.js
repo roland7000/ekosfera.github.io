@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import useSupercluster from 'use-supercluster';
 import useSwr from 'swr';
 import styles from './styles.module.scss';
+import { FILTER_SUCCESS } from '../../constants';
 
 // Components
 import Map from '../Map';
@@ -16,7 +17,14 @@ function MapWithCluster() {
   const [zoom, setZoom] = useState(10);
   const [bounds, setBounds] = useState(null);
   const { loading: incidentsLoading, error: incidentsError, data: incidentsData } = useSelector(state => state.incidents);
-  const normalizedData = incidentsData && incidentsData.length ? normalizeIncidents(incidentsData) : [];
+  const { activeFilterType } = useSelector(state => state.filter);
+
+  let incidentsDataFiltered = incidentsData
+  if (activeFilterType === FILTER_SUCCESS && incidentsData && incidentsData.length) {
+    incidentsDataFiltered = incidentsData.filter(item => item.status === "CLOSED_SUCCESS")
+  }
+
+  const normalizedData = incidentsDataFiltered && incidentsDataFiltered.length ? normalizeIncidents(incidentsDataFiltered) : []
 
   const points = normalizedData.map(({
     id,
@@ -83,7 +91,10 @@ function MapWithCluster() {
           id: clusterId
         }) => {
           const [longitude, latitude] = coordinates;
-          const styles = {};
+          const styles = {
+            height: '30px',
+            width: '30px'
+          };
           const {
             point_count: pointsCount,
             cluster: isCluster,
@@ -92,14 +103,14 @@ function MapWithCluster() {
             damageMeasure
           } = properties;
 
-          if (damageValue) {
-            const val = (damageValue * 0.00005).toFixed(0);
+          // if (damageValue) {
+          //   const val = (damageValue * 0.00005).toFixed(0);
 
-            styles.width = val + 'px';
-            styles.height = val + 'px';
-          }
+          //   styles.width = val + 'px';
+          //   styles.height = val + 'px';
+          // }
 
-          const markerValue = damageValue && damageMeasure && `${damageValue.toFixed(2)} ${damageMeasure}` || null
+          const markerValue = damageValue && damageMeasure && `${damageValue.toFixed(2)} ${damageMeasure}`
           const val = isCluster ? pointsCount : markerValue
 
           return <MapMarker

@@ -3,12 +3,13 @@ import React, { useRef } from 'react';
 import cx from 'classnames';
 
 // Hooks
-import { withNamespaces } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 // Styles
 import styles from './styles.module.scss';
 
-const Title = ({ t, value, measure, className }) => {
+const Title = ({ value, measure, className }) => {
+  const [t] = useTranslation();
   if (!value || !measure) return null;
 
   return (
@@ -28,4 +29,4 @@ const Title = ({ t, value, measure, className }) => {
   )
 }
 
-export default withNamespaces()(Title);
+export default Title;

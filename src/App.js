@@ -39,10 +39,6 @@ function App() {
     console.log('state', state)
   }, [state])
 
-  // console.log('open', open)
-  // console.log('content', content)
-  // console.log('coordinates', coordinates)
-
   useEffect(() => {
     if (!data && !loading && !error) {
       dispatch(getIncidents());

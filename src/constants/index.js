@@ -5,7 +5,7 @@ export const URL_INCIDENTS = '/incidents';
 export const URL_TAGS = '/descriptor-tags';
 export const URL_POST_PHOTOS = '/upload';
 export const URL_POST_REPORT = '/content-manager/explorer/application::incident.incident';
-export const MAP_DEFAULT_CENTER = { lat: 48.148319, lng: 24.278928 };
+export const MAP_DEFAULT_CENTER = { lat: 48.03, lng: 24.13 };
 export const MAP_DEFAULT_ZOOM = 10;
 export const DOCUMENTS_EXTENSIONS_LIST = ['.pdf', '.xls', '.xlsx', '.doc', '.docx', 'csv', '.txt', '.odt', '.ods', '.ptt', '.pttx'];
 
@@ -33,6 +33,12 @@ export const GET_TAGS_ERROR = 'GET_TAGS_ERROR';
 export const SET_INCIDENTS_LOCATION_LOADING = 'SET_INCIDENTS_LOCATION_LOADING';
 export const SET_INCIDENTS_LOCATION_COMPLETE = 'SET_INCIDENTS_LOCATION_COMPLETE';
 export const SET_INCIDENTS_LOCATION_ERROR = 'SET_INCIDENTS_LOCATION_ERROR';
+
+export const GET_PARSED_LOCATION_LOADING = 'GET_PARSED_LOCATION_LOADING';
+export const GET_PARSED_LOCATION_COMPLETE = 'GET_PARSED_LOCATION_COMPLETE';
+export const GET_PARSED_LOCATION_ERROR = 'GET_PARSED_LOCATION_ERROR';
+
+export const SET_ACTIVE_FILTER = 'SET_ACTIVE_FILTER';
 
 // Form
 export const FORM_SET_USER_NAME = 'FORM:SET_USER_NAME';
@@ -62,8 +68,14 @@ export const FORM_DELETE_IMAGE_URL = 'FORM:DELETE_IMAGE_URL';
 export const IMAGE_PERCENTAGE_DIFFERENCE = 10;
 
 // RegExp
-export const REGEXP_NAME = /^[a-zA-Z ]{2,30}$/;
+export const REGEXP_NAME = /[а-яА-ЯґҐєЄіІїЇa-zA-Z]+/g;
 export const REGEXP_EMAIL = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export const FIELD_TYPE_NAME = 'NAME';
 export const FIELD_TYPE_EMAIL = 'EMAIL';
+
+export const FILTER_ALL = 'FILTER_ALL';
+export const FILTER_SUCCESS = 'FILTER_SUCCESS';
+
+export const LANGUAGE_UA = 'ua';
+export const LANGUAGE_EN = 'en';

@@ -1,10 +1,10 @@
 // Common
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 
 // Hooks
 import { useSelector, useDispatch } from 'react-redux'
-import { withNamespaces } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 // Components
 import TagList from '../TagList'
@@ -15,12 +15,14 @@ import ClosePane from './DialogsComponents/ClosePane';
 
 // Action Creators
 import { setDetailsDialogClosed } from '../../store/actions/detailsDialog.actions';
+import { setIncidentLocation } from '../../store/actions/incidents.actions';
 
-function Dialog({ t }) {
-  const { open, content } = useSelector(state => state.detailsDialog)
+function Dialog() {
+  const [t] = useTranslation();
+  const [locationRetrived, setLocationRetrived] = useState(false);
   const dispatch = useDispatch();
-
-  if (!open || !content) return null;
+  const { open, content } = useSelector(state => state.detailsDialog)
+  const { locationData: incidentsLocationData } = useSelector(state => state.incidents)
   const {
     locationData,
     attachments,
@@ -34,6 +36,22 @@ function Dialog({ t }) {
     id
   } = content;
   const latlon = locationData && locationData[0] && locationData[0].latlon || '';
+
+  const locationObj =
+    incidentsLocationData &&
+    incidentsLocationData.length &&
+    incidentsLocationData.find(location => location.id === id) || null
+
+  const locationCaption = locationObj && locationObj.location || ''
+
+  useEffect(() => {
+    if (!latlon || locationRetrived) return;
+
+    dispatch(setIncidentLocation(latlon, id))
+    setLocationRetrived(true)
+  }, [latlon])
+
+  if (!open || !content) return null;
 
   const handleDialogClose = () => {
     dispatch(setDetailsDialogClosed())
@@ -64,12 +82,13 @@ function Dialog({ t }) {
           />
         </ClosePane>
         <div className={styles['dialog_details-content']}>
+          <div className={styles['dialog_details-content-coordinates']}>
+            {locationCaption && <h3 className={styles['dialog_details-content-coordinates-title']}>{locationCaption}</h3>}
+            <p>{t('Coordinates')}: <span>{latlon}</span></p>
+          </div>
           <TagList tagList={tags} className={styles['dialog_details-content-tag_list']} />
           <Stages stages={actions} className={styles['dialog_details-content-stage']} />
-          <div className={styles['dialog_details-content-coordinates']}>
-            <p>{t('Coordinates')}:</p>
-            <p>{latlon}</p>
-          </div>
+          <p className={styles['dialog_details-content-slider-caption']}>{t('photos')}</p>
           <Slider
             images={attachments}
             className={styles['dialog_details-content-slider']}
@@ -80,4 +99,4 @@ function Dialog({ t }) {
   )
 }
 
-export default withNamespaces()(Dialog);
+export default Dialog;

@@ -1,0 +1,34 @@
+.lang_switcher {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  background-color: #fafafa;
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: auto;
+  margin-right: 20px;
+
+  @media only screen and (min-width: 900px) {
+    margin-left: 100px;
+    margin-right: 0;
+  }
+
+  &-item {
+    padding: 8px 10px;
+    border: 1px solid #333;
+    border-right-width: 0;
+    cursor: pointer;
+
+    + .lang_switcher-item {
+      border-left-width: 0;
+      border-right-width: 1px;
+    }
+
+    &--active {
+      background-color: #1bae47;
+      border-color: #1bae47;
+      color: #fff;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withNamespaces } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
@@ -8,10 +8,10 @@ import PlacesAutocomplete, {
 import styles from './styles.module.scss';
 
 const LocationSearchInput = ({
-  t,
   onSelect,
   getLocationData
 }) => {
+  const [t] = useTranslation();
   const [state, setState] = useState({
     address: '',
     value: ''
@@ -22,11 +22,10 @@ const LocationSearchInput = ({
   const handleSelect = address => {
     setState({ address });
 
-    onSelect && onSelect({ address });
-
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => {
+        onSelect && onSelect(latLng);
         getLocationData && getLocationData({
           center: latLng,
           address
@@ -68,4 +67,4 @@ const LocationSearchInput = ({
   )
 }
 
-export default withNamespaces()(LocationSearchInput);
+export default LocationSearchInput;

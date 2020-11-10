@@ -1,18 +1,19 @@
 // Common
 import React from 'react';
-import { withNamespaces } from 'react-i18next';
+import Filter from '../../components/Filters'
 
 // Components
 import Map from '../../components/MapWithCluster';
 
 import styles from './styles.module.scss';
 
-function Reports({ t }) {
+function Reports() {
   return (
     <div className={styles.reports}>
+      <Filter />
       <Map />
     </div>
   );
 }
 
-export default withNamespaces()(Reports);
+export default Reports;

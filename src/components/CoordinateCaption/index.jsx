@@ -9,11 +9,11 @@ const Caption = ({ lat, lng, className }) => (
   })}>
     <div className={styles['caption_chunk']}>
       <span className={styles['caption_bold']}>lat</span>
-      {lat || '...'}
+      {lat && parseInt(lat).toFixed(7) || '...'}
     </div>
     <div className={styles['caption_chunk']}>
       <span className={styles['caption_bold']}>lon</span>
-      {lng || '...'}
+      {lng && parseInt(lng).toFixed(7) || '...'}
     </div>
   </div>
 )

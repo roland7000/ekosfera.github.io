@@ -7,14 +7,16 @@ import styles from './styles.module.scss';
 
 // Hooks
 import { useSelector, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 // Action Creators
 import { formDeleteImage } from '../../../store/actions/report.action';
 
-export default function ImageUploader({
+const ImageUploader = ({
   setImages,
   className
-}) {
+}) => {
+  const [t] = useTranslation();
   const { images } = useSelector(state => state.report.submitData)
   const dispatch = useDispatch();
   const maxNumber = 3;
@@ -49,7 +51,7 @@ export default function ImageUploader({
                     }}
                     className={styles['upload-list_item-handler']}
                   >
-                    Видалити
+                    {t('delete')}
                   </button>
                 </li>
               )
@@ -60,7 +62,7 @@ export default function ImageUploader({
             handleClick={onImageUpload}
             isPrimary
           >
-            Завантажити
+            {t('download')}
           </Button>
         </>
         )}
@@ -68,3 +70,5 @@ export default function ImageUploader({
     </div>
   );
 }
+
+export default ImageUploader;

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import cx from 'classnames';
 import { validateField } from '../../../helpers/validation';
 import { FIELD_TYPE_NAME, FIELD_TYPE_EMAIL } from '../../../constants';
-import { withNamespaces } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 // Components
 import ImageUploader from "./ImageUpload";
@@ -22,7 +22,8 @@ import {
 // Styles
 import styles from './styles.module.scss';
 
-const StepOne = ({ t }) => {
+const StepOne = () => {
+  const [t] = useTranslation();
   const dispatch = useDispatch();
   const {
     submitData: {
@@ -83,7 +84,7 @@ const StepOne = ({ t }) => {
               maxLength={30}
               value={email || ''}
             />
-            {formEmailError && <div className={styles['form_field-input-error']}>{t('nameError')}</div>}
+            {formEmailError && <div className={styles['form_field-input-error']}>{t('emailError')}</div>}
           </div>
           <div className={cx(styles['form_field'], styles['form_field-attachments'])}>
             <h4 className={styles['form_subtitle']}>{t('addPhoto')} <sup>*</sup></h4>
@@ -110,4 +111,4 @@ const StepOne = ({ t }) => {
   )
 }
 
-export default withNamespaces()(StepOne);
+export default StepOne;

@@ -1,11 +1,11 @@
 // Common
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import styles from './styles.module.scss';
 import getStylesByCoordinates from '../../helpers/getStylesByCoordinates';
 
 // Hooks
 import { useSelector, useDispatch } from 'react-redux';
-import { withNamespaces } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 // Components
 import TagList from '../TagList'
@@ -18,7 +18,9 @@ import Slider from './DialogsComponents/Slider';
 import { setInfoDialogClosed } from '../../store/actions/infoDialog.actions';
 import { setDetailsDialogOpen, setDetailsDialogContent } from '../../store/actions/detailsDialog.actions';
 
-function Dialog({ t }) {
+function Dialog() {
+  const [t] = useTranslation();
+  const [height, setHeight] = useState(null);
   const { open: detailsDialogOpen } = useSelector(state => state.detailsDialog);
   const {
     open,
@@ -26,6 +28,12 @@ function Dialog({ t }) {
     coordinates
   } = useSelector(state => state.infoDialog);
   const dispatch = useDispatch();
+
+  const dialogRef = useCallback(node => {
+    if (node !== null) {
+      setHeight(node.getBoundingClientRect().height);
+    }
+  }, []);
 
   if (!open || !content || !coordinates || detailsDialogOpen) return null;
 
@@ -50,7 +58,7 @@ function Dialog({ t }) {
     isDialogPositionedToTop,
     isDialogPositionedToRight,
     ...restStyles
-  } = getStylesByCoordinates(coordinates);
+  } = getStylesByCoordinates(coordinates, height);
 
   const handleDialogClose = () => {
     dispatch(setInfoDialogClosed())
@@ -76,23 +84,28 @@ function Dialog({ t }) {
         className={styles['dialog_info-body']}
         onClick={handleContentClick}
         style={restStyles}
+        ref={dialogRef}
       >
         <div className={styles['dialog_info-content-close_btn-wrap']} onClick={handleDialogClose}>
           <span className={styles['dialog_info-content-close_btn']} />
         </div>
-        <Slider images={images} className={styles['dialog_info-content-slider']} isThumbnail />
-        <DamageTitle damage={damage} />
-        <TagList tagList={tags} className={styles['dialog_info-content-tag_list']} />
-        <Stage stage={stage} />
-        <Button
-          className={styles['dialog_info-content-more-info-btn']}
-          handleClick={handleClickMoreDetails} link>
-          {t('More information')}
-        </Button>
+        <div className={styles['dialog_info-content']}>
+          <Slider images={images} className={styles['dialog_info-content-slider']} isThumbnail />
+          <DamageTitle damage={damage} />
+          <TagList tagList={tags} className={styles['dialog_info-content-tag_list']} />
+          <Stage stage={stage} />
+        </div>
+        <div className={styles['dialog_info-content-more-info-btn_wrap']}>
+          <Button
+            className={styles['dialog_info-content-more-info-btn']}
+            handleClick={handleClickMoreDetails} link>
+            {t('More information')}
+          </Button>
+        </div>
       </div>
     </div>
   )
 
 }
 
-export default withNamespaces()(Dialog);
+export default Dialog;

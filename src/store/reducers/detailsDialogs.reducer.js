@@ -6,7 +6,18 @@ import {
 
 const initialState = {
   open: false,
-  content: null,
+  content: {
+    locationData: null,
+    attachments: null,
+    actions: null,
+    damage: {
+      measure: null,
+      value: null
+    },
+    status: null,
+    tags: null,
+    id: null
+  },
   coordinates: null
 }
 
@@ -19,12 +30,9 @@ function dialogReducer(state = initialState, action) {
       };
     case SET_DETAILS_DIALOG_CLOSED:
       return {
-        ...state,
-        content: null,
-        open: false
+        ...initialState
       };
     case SET_DETAILS_DIALOG_CONTENT:
-      console.log('SET_DETAILS_DIALOG_CONTENT', action)
       return {
         ...state,
         content: action.payload

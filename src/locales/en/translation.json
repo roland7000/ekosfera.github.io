@@ -17,5 +17,19 @@
   "emailError": "The entered E-mail address is incorrect",
   "addPhoto": "Add a photo of the recorded violation",
   "addPhotoError": "Failed to load image",
-  "chooseCategory": "Select categories that describe violations"
+  "chooseCategory": "Select categories that describe violations",
+  "formSubmitError": "Some error occurs",
+  "formSubmitSuccess": "Your report was submitted successfully",
+  "close": "Close",
+  "next": "Next",
+  "submit": "Відправити",
+  "step": "Step",
+  "formTitle": "Fill out the violation report form",
+  "required": "* fields are required",
+  "delete": "Delete",
+  "download": "Download",
+  "choose location": "Select the location of the violation on the map",
+  "photos": "Photo from the scene",
+  "All reports": "All reports",
+  "Successed": "Successed"
 }

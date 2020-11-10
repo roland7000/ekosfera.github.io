@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import cx from 'classnames';
 
 // Components
-// import FileList from '../../../FileList';
+import FilesList from '../../../FilesList';
 
 // Styles
 import styles from './styles.module.scss';
@@ -21,15 +21,13 @@ const Stages = ({ stages, className }) => {
           date,
           id,
         }) => (
-          <li
-            key={name}
-            className={cx(
-              styles['stage_list-item']
-            )}
-          >
-            {name}
-          </li>
-        ))
+            <li key={name + id} className={styles['stage_list-item']}>
+              <div className={styles['stage_list-item_date']}>{date}</div>
+              <h5 className={styles['stage_list-item_title']}>{name}</h5>
+              <div className={styles['stage_list-item_description']}>{description}</div>
+              {attachments && attachments.length && <FilesList files={attachments} />}
+            </li>
+          ))
       }
     </ul>
   )

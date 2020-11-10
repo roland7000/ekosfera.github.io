@@ -21,6 +21,7 @@ import {
 } from '../../constants';
 
 const clearErrors = {
+  formSubmittedSuccessfully: false,
   formSubmitLoading: false,
   formImagesLoading: false,
   formImageLoading: false,
@@ -38,10 +39,13 @@ var year = dateObj.getUTCFullYear();
 
 const initialState = {
   submitData: {
-    locationData: [],
+    locationData: [{
+      lat: '',
+      lng: ''
+    }],
     reporter: {
-      fullName: null,
-      email: null
+      fullName: '',
+      email: ''
     },
     attachments: [],
     images: [],
@@ -92,7 +96,7 @@ function reportReducer(state = initialState, action) {
         ...state,
         submitData: {
           ...state.submitData,
-          locationData: action.payload
+          locationData: [action.payload]
         },
       };
     case FORM_SET_TAGS:
@@ -128,11 +132,6 @@ function reportReducer(state = initialState, action) {
       return {
         ...state,
         formImageLoading: true
-      };
-    case FORM_SET_IMAGES_URLS_LOADING:
-      return {
-        ...state,
-        formImagesLoading: true
       };
     case FORM_SET_IMAGE_URL_COMPLETE:
       return {
@@ -194,25 +193,28 @@ function reportReducer(state = initialState, action) {
     case FORM_GET_SUBMIT_LOADING:
       return {
         ...state,
-        formSubmitLoading: true
+        formSubmitLoading: true,
       };
     case FORM_GET_SUBMIT_COMPLETE:
       return {
         ...state,
-        data: action.payload,
-        formSubmitLoading: false,
-        ...clearErrors
+        ...clearErrors,
+        formSubmittedSuccessfully: true,
+        formSubmitLoading: false
       };
     case FORM_GET_SUBMIT_ERROR:
       return {
         ...state,
         formSubmitError: action.payload,
+        formSubmittedSuccessfully: false,
         formSubmitLoading: false
       };
     case SET_NEW_REPORT_DIALOG_CLOSED:
       return {
-        ...initialState
-      };
+        ...state,
+        formSubmittedSuccessfully: false,
+        formSubmitError: null
+      }
     default:
       return state;
   }

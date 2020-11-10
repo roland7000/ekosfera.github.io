@@ -25,7 +25,6 @@ function dialogReducer(state = initialState, action) {
         open: false
       };
     case SET_INFO_DIALOG_CONTENT:
-      console.log('SET_INFO_DIALOG_CONTENT', action)
       return {
         ...state,
         content: action.payload

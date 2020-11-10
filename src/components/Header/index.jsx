@@ -5,16 +5,18 @@ import cx from 'classnames'
 import imagePath from '../../assets/logo.png';
 
 // Hooks
-import { withNamespaces } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 
 // Components
 import Button from '../Button';
+import LangiageSwitcher from '../LangiageSwitcher';
 
 // Action Creators
 import { setNewReportDialogOpen } from '../../store/actions/newReportDialog.actions';
 
-function Header({ t }) {
+function Header() {
+  const [t] = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const dispatch = useDispatch();
 
@@ -33,6 +35,7 @@ function Header({ t }) {
           src={imagePath}
           alt="logo"
         />
+        <LangiageSwitcher />
         <div className={cx({
             [styles['header_menu']]: true,
             [styles['header_menu--is-open']]: isMenuOpen,
@@ -59,4 +62,4 @@ function Header({ t }) {
   )
 }
 
-export default withNamespaces()(Header);
+export default Header;

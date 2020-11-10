@@ -4,7 +4,7 @@ import {
   GET_INCIDENTS_ERROR,
   SET_INCIDENTS_LOCATION_LOADING,
   SET_INCIDENTS_LOCATION_COMPLETE,
-  SET_INCIDENTS_LOCATION_ERROR,
+  SET_INCIDENTS_LOCATION_ERROR
 } from '../../constants';
 
 const initialState = {
@@ -25,7 +25,10 @@ function incidentsReducer(state = initialState, action) {
     case SET_INCIDENTS_LOCATION_COMPLETE:
       return {
         ...state,
-        locationData: action.payload
+        locationData: [
+          ...state.locationData,
+          action.payload
+        ]
       };
     case SET_INCIDENTS_LOCATION_ERROR:
       return {

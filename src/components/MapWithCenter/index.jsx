@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import GoogleMapReact from 'google-map-react';
 import {
   GOOGLE_MAPS_API,
@@ -13,10 +13,6 @@ const MapWithCenter = ({
   children
 }) => {
   const mapRef = useRef()
-
-  useEffect(() => {
-    console.log('useEffect center:', center)
-  }, [center])
 
   return (
     <GoogleMapReact

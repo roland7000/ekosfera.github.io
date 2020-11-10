@@ -29,10 +29,7 @@ export const getIncidents = () => dispatch => {
   })
 
   API.get(URL_INCIDENTS)
-    .then(response => {
-      const data = response && response.data ? addRandomeDamageValue(response.data) : [];
-      return data;
-    }) // TODO: remove this after new API comes...
+    .then(response => response && response.data)
     .then(data => dispatch({
       type: GET_INCIDENTS_COMPLETE,
       payload: data
@@ -43,7 +40,7 @@ export const getIncidents = () => dispatch => {
     }))
 }
 
-export const setIncidentLocation = latlon => dispatch => {
+export const setIncidentLocation = (latlon, id) => dispatch => {
   const [lat, lng] = latlon.split(', ');
   if (!latlon || !lat || !lng) return
 
@@ -52,14 +49,17 @@ export const setIncidentLocation = latlon => dispatch => {
     payload: ''
   })
 
-  Geocode.fromLatLng(lat, lng).then(
+  Geocode.fromLatLng(parseInt(lat).toFixed(7), parseInt(lng).toFixed(7)).then(
     response => dispatch({
       type: SET_INCIDENTS_LOCATION_COMPLETE,
-      payload: response.results[0].formatted_address
+      payload: {
+        location: response.results[0].formatted_address,
+        id
+      }
     }),
-    error => dispatch({
+    () => dispatch({
       type: SET_INCIDENTS_LOCATION_ERROR,
-      payload: error
+      payload: id
     })
   );
 }
