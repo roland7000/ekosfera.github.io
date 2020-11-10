@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ekosfera.github.io/precache-manifest.877066cf92f69b73ec54857e8ced17fa.js"
+  "/ekosfera.github.io/precache-manifest.8a29dc801beeaa39c93ae0a35c91ca56.js"
 );
 
 self.addEventListener('message', (event) => {
