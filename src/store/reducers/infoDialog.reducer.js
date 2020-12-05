@@ -21,7 +21,6 @@ function dialogReducer(state = initialState, action) {
     case SET_INFO_DIALOG_CLOSED:
       return {
         ...state,
-        content: null,
         open: false
       };
     case SET_INFO_DIALOG_CONTENT:

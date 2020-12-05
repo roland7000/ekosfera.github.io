@@ -1,6 +1,7 @@
 // Common
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './styles.module.scss';
+import YouTube from 'react-youtube';
 
 // Hooks
 import { useSelector, useDispatch } from 'react-redux'
@@ -15,18 +16,17 @@ import ClosePane from './DialogsComponents/ClosePane';
 
 // Action Creators
 import { setDetailsDialogClosed } from '../../store/actions/detailsDialog.actions';
-import { setIncidentLocation } from '../../store/actions/incidents.actions';
 
 function Dialog() {
   const [t] = useTranslation();
-  const [locationRetrived, setLocationRetrived] = useState(false);
   const dispatch = useDispatch();
   const { open, content } = useSelector(state => state.detailsDialog)
-  const { locationData: incidentsLocationData } = useSelector(state => state.incidents)
   const {
     locationData,
     attachments,
     actions,
+    title,
+    videoUrl,
     damage: {
       measure,
       value
@@ -36,20 +36,6 @@ function Dialog() {
     id
   } = content;
   const latlon = locationData && locationData[0] && locationData[0].latlon || '';
-
-  const locationObj =
-    incidentsLocationData &&
-    incidentsLocationData.length &&
-    incidentsLocationData.find(location => location.id === id) || null
-
-  const locationCaption = locationObj && locationObj.location || ''
-
-  useEffect(() => {
-    if (!latlon || locationRetrived) return;
-
-    dispatch(setIncidentLocation(latlon, id))
-    setLocationRetrived(true)
-  }, [latlon])
 
   if (!open || !content) return null;
 
@@ -83,7 +69,7 @@ function Dialog() {
         </ClosePane>
         <div className={styles['dialog_details-content']}>
           <div className={styles['dialog_details-content-coordinates']}>
-            {locationCaption && <h3 className={styles['dialog_details-content-coordinates-title']}>{locationCaption}</h3>}
+            {title && <h3 className={styles['dialog_details-content-coordinates-title']}>{title}</h3>}
             <p>{t('Coordinates')}: <span>{latlon}</span></p>
           </div>
           <TagList tagList={tags} className={styles['dialog_details-content-tag_list']} />
@@ -93,6 +79,18 @@ function Dialog() {
             images={attachments}
             className={styles['dialog_details-content-slider']}
           />
+          {videoUrl && <>
+            <p className={styles['dialog_details-content-slider-caption']}>{t('video')}</p>
+            <div className={styles['dialog_details-video_wrap']}>
+              <YouTube
+                videoId={videoUrl}
+                opts={{
+                  height: '390',
+                  width: '640'
+                }}
+              />
+            </div>
+          </>}
         </div>
       </div>
     </div>

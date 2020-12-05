@@ -43,3 +43,15 @@
   background-color: rgba(244, 67, 54, 0.54);
   text-shadow: 1px 1px #cf836d;
 }
+
+.isCompleted {
+  background-color: rgba(27, 174, 71, .85);
+  text-shadow: 1px 1px green;
+
+  span {
+    background-color: rgba(27, 174, 71, .85);
+    &:after {
+      border-color: rgba(27, 174, 71, .85) transparent transparent transparent;
+    }
+  }
+}

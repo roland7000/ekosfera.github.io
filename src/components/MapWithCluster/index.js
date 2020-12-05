@@ -30,20 +30,21 @@ function MapWithCluster() {
     id,
     status,
     locationData,
-    damage: {
-      measure: damageMeasure = null,
-      value: damageValue = null
-    }
+    damage
   }) => {
     const { latlon } = locationData[0];
     const [lat, lon] = latlon && (latlon.slice(0, latlon.length - 1)).split(', ')
+    const {
+      measure: damageMeasure,
+      value: damageValue
+    } = damage && damage[0] || { measure: null, value: null }
 
     return ({
       type: 'Feature',
       properties: {
         isCluster: false,
         incidentsId: id,
-        category: status,
+        status,
         damageMeasure,
         damageValue
       },
@@ -100,17 +101,11 @@ function MapWithCluster() {
             cluster: isCluster,
             incidentsId,
             damageValue,
-            damageMeasure
+            damageMeasure,
+            status
           } = properties;
 
-          // if (damageValue) {
-          //   const val = (damageValue * 0.00005).toFixed(0);
-
-          //   styles.width = val + 'px';
-          //   styles.height = val + 'px';
-          // }
-
-          const markerValue = damageValue && damageMeasure && `${damageValue.toFixed(2)} ${damageMeasure}`
+          const markerValue = damageValue ? `${damageValue} ${damageMeasure}` : ''
           const val = isCluster ? pointsCount : markerValue
 
           return <MapMarker
@@ -121,6 +116,7 @@ function MapWithCluster() {
             lng={longitude}
             value={val}
             style={styles}
+            isCompleted={status === "CLOSED_SUCCESS"}
           />
         })
       }

@@ -1,9 +1,11 @@
 // Common
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import cx from 'classnames';
 import { validateField } from '../../../helpers/validation';
 import { FIELD_TYPE_NAME, FIELD_TYPE_EMAIL } from '../../../constants';
+
+// Hooks
+import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 // Components
@@ -32,11 +34,11 @@ const StepOne = () => {
         email
       },
     },
-    formImagesLoading,
     formImagesError,
     formNameError,
     formEmailError
   } = useSelector(state => state.report);
+  const { data: tagsData } = useSelector(state => state.tags);
 
   const handleSetName = event => dispatch(formSetName(event.target.value))
 
@@ -102,6 +104,7 @@ const StepOne = () => {
             <h4 className={styles['form_subtitle']}>{t('chooseCategory')} <sup>*</sup></h4>
             <TagList
               className={styles['form_field-tagList']}
+              tagList={tagsData}
               isSelectList
             />
           </div>

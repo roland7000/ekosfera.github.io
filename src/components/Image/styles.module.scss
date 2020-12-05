@@ -5,3 +5,20 @@
 .thumbnail {
   max-height: 211px;
 }
+
+.isFullScreen {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.full-screen {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  right: 40px;
+  padding: 10px;
+}
+
+.wrapper {
+  position: relative;
+}

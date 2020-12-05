@@ -16,20 +16,21 @@ const isSelected = (list, uuid) => {
   return list.some(item => item.uuid === uuid)
 };
 
-const TagList = ({ className, isSelectList }) => {
+const TagList = ({ tagList, className, isSelectList }) => {
   const { submitData: { tags: selectedTags } } = useSelector(state => state.report);
-  const { data: tagsData } = useSelector(state => state.tags)
   const dispatch = useDispatch();
 
-  if (!tagsData || !tagsData.length) return null;
+  if (!tagList || !tagList.length) return null;
 
   const handleTagClick = index => () => {
-    if ((!index && !(index === 0)) || !tagsData || !tagsData.length) return;
+    if (!isSelectList) return
+
+    if ((!index && !(index === 0)) || !tagList || !tagList.length) return;
     let selectedTagsUpdated;
-    const isTagSelected = isSelected(selectedTags, tagsData[index].uuid);
+    const isTagSelected = isSelected(selectedTags, tagList[index].uuid);
 
     if (isTagSelected) {
-      const selectedIndex = selectedTags.indexOf(tagsData[index])
+      const selectedIndex = selectedTags.indexOf(tagList[index])
       if (selectedIndex === -1) return
 
       const start = selectedTags.slice(0, selectedIndex)
@@ -37,7 +38,7 @@ const TagList = ({ className, isSelectList }) => {
       
       selectedTagsUpdated = [...start, ...end];
     } else {
-      selectedTagsUpdated = [...selectedTags, tagsData[index]]
+      selectedTagsUpdated = [...selectedTags, tagList[index]]
     }
 
     dispatch(formSetTags(selectedTagsUpdated))
@@ -51,7 +52,7 @@ const TagList = ({ className, isSelectList }) => {
         [styles['tag-list_select']]: isSelectList
       },
     )}>
-      {tagsData.map(({ name, uuid }, index) => {
+      {tagList.map(({ name, uuid }, index) => {
         return (
           <li
             key={uuid}

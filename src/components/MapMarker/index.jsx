@@ -15,6 +15,7 @@ const MapMarker = ({
   value,
   isCluster,
   incidentsId,
+  isCompleted,
   style
 }) => {
   const { data } = useSelector(store => store.incidents);
@@ -50,7 +51,8 @@ const MapMarker = ({
           cx({
             [styles.marker]: true,
             [styles.cluster]: isCluster,
-            [styles.single]: !isCluster
+            [styles.single]: !isCluster,
+            [styles.isCompleted]: isCompleted
           })
         }
         data-tip

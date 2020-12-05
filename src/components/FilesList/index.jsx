@@ -14,7 +14,7 @@ const FilesLst = ({ files }) => {
     <ul className={styles['list']}>
       {
         files.map(({ name, url, ext }) =>
-          <li className={styles['list_item']}>
+          <li className={styles['list_item']} key={name + url}>
             <FileLink ext={ext} url={url} name={name} />
           </li>
         )

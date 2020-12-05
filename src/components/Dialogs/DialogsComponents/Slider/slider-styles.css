@@ -15,6 +15,27 @@
 	background: red
 }
 
+.open-fullscreen {
+	background-color: transparent;
+	border: none;
+	color: #1E88E5;
+	display: flex;
+	align-items: center;
+	padding: 0;
+	cursor: pointer;
+	font-weight: 600;
+	font-style: italic;
+	margin-left: auto;
+	margin-bottom: 4px;
+}
+
+.open-fullscreen-icon {
+	width: 14px;
+	height: 14px;
+	margin-left: 10px;
+	fill: #1E88E5;
+}
+
 .slick-initialized {
 	display: flex;
 	width: 100%;
@@ -110,6 +131,7 @@
 .slick-slide {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 }
 
 [dir=rtl] .slick-next {

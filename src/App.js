@@ -9,6 +9,7 @@ import Reports from './views/Reports';
 import InfoDialog from './components/Dialogs/InfoDialog';
 import DetailsDialog from './components/Dialogs/DetailsDialog';
 import ReportDialog from './components/Dialogs/NewReportDialog/index';
+import ImagesDialog from './components/Dialogs/ImagesDialog/index';
 import Header from './components/Header';
 
 // Hooks
@@ -52,6 +53,7 @@ function App() {
       <InfoDialog />
       <DetailsDialog />
       <ReportDialog />
+      <ImagesDialog />
     </div>
   );
 }

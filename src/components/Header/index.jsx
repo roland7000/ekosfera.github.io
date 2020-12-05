@@ -41,7 +41,6 @@ function Header() {
             [styles['header_menu--is-open']]: isMenuOpen,
           })}>
           <ul className={styles['header_menu_list']}>
-            <li onClick={handleCloseMenu}>{t('Reports')}</li>
             <li onClick={handleCloseMenu}>{t('Sponsors')}</li>
           </ul>
           <Button

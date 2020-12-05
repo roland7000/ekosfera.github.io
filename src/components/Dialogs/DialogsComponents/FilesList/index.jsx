@@ -15,7 +15,7 @@ const FilesList = files => {
     <ul className={cx(styles['files-list'])}>
       {files.map(({ name, hash, url, ext }) => (
         <li
-          key={hash}
+          key={hash + name}
           className={cx(
             styles['files-list_item']
           )}

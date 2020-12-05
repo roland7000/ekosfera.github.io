@@ -2,39 +2,15 @@ import {
   GET_INCIDENTS_LOADING,
   GET_INCIDENTS_COMPLETE,
   GET_INCIDENTS_ERROR,
-  SET_INCIDENTS_LOCATION_LOADING,
-  SET_INCIDENTS_LOCATION_COMPLETE,
-  SET_INCIDENTS_LOCATION_ERROR
 } from '../../constants';
 
 const initialState = {
   data: null,
-  locationData: [],
-  locationLoading: false,
-  error: null,
-  locationError: null
+  error: null
 }
 
 function incidentsReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_INCIDENTS_LOCATION_LOADING:
-      return {
-        ...state,
-        locationLoading: true
-      };
-    case SET_INCIDENTS_LOCATION_COMPLETE:
-      return {
-        ...state,
-        locationData: [
-          ...state.locationData,
-          action.payload
-        ]
-      };
-    case SET_INCIDENTS_LOCATION_ERROR:
-      return {
-        ...state,
-        locationError: action.payload
-      };
     case GET_INCIDENTS_LOADING:
       return {
         ...state,

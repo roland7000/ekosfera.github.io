@@ -30,6 +30,9 @@
   "download": "Download",
   "choose location": "Select the location of the violation on the map",
   "photos": "Photo from the scene",
+  "video": "Video from the scene",
   "All reports": "All reports",
-  "Successed": "Successed"
+  "Successed": "Successed",
+  "files attached": "Files attached",
+  "violation stages": "Stages of registration of violation"
 }
