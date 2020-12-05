@@ -24,8 +24,8 @@ function Header() {
     setIsMenuOpen(false)
     dispatch(setNewReportDialogOpen())
   }
-  const handleOpenMenu = () => setIsMenuOpen(true)
-  const handleCloseMenu = () => setIsMenuOpen(false)
+  const handleOpenMenu = () => setIsMenuOpen(!isMenuOpen)
+  // const handleCloseMenu = () => setIsMenuOpen(false)
 
   return (
     <div className={styles['header_wrapper']}>
@@ -41,7 +41,7 @@ function Header() {
             [styles['header_menu--is-open']]: isMenuOpen,
           })}>
           <ul className={styles['header_menu_list']}>
-            <li onClick={handleCloseMenu}>{t('Sponsors')}</li>
+            {/* <li onClick={handleCloseMenu}>{t('Sponsors')}</li> */}
           </ul>
           <Button
             className={styles['header_menu_list_button']}
