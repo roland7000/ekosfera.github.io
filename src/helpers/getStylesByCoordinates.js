@@ -31,16 +31,6 @@ const getStylesByCoordinates = ({
     const isFreeSpaceAtTop = y > dialogHeight;
     const isFreeSpaceAtBottom = (innerHeight - y) > dialogHeight;
 
-    console.log('isFreeSpaceAtTop', isFreeSpaceAtTop)
-    console.log('isFreeSpaceAtBottom', isFreeSpaceAtBottom)
-    console.log('')
-    console.log('isDialogPositionedToTop', styles.isDialogPositionedToTop)
-    console.log('dialogHeight', dialogHeight)
-    console.log('height', height)
-    console.log('innerHeight', innerHeight)
-    console.log('y', y)
-    console.log('')
-
     if (styles.isDialogPositionedToTop) {
       if (isFreeSpaceAtTop) {
         styles.top = 'auto'
@@ -62,9 +52,7 @@ const getStylesByCoordinates = ({
       }
     }
   }
-  console.log('')
-  console.log('____styles____', styles)
-  console.log('')
+
   return styles
 }
 

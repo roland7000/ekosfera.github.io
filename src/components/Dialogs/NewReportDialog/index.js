@@ -107,8 +107,6 @@ function Dialog() {
     }))
   }
 
-  console.log('formSubmittedSuccessfully', formSubmittedSuccessfully)
-
   return (
     <div className={styles['dialog_report-wrapper']}>
       <div className={styles['dialog_report-background']} onClick={handleDialogClose} />
