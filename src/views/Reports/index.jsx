@@ -7,7 +7,7 @@ import Map from '../../components/MapWithCluster';
 
 import styles from './styles.module.scss';
 
-function Reports() {
+function Reports () {
   return (
     <div className={styles.reports}>
       <Filter />
