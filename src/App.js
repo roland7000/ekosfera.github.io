@@ -15,30 +15,19 @@ import Header from './components/Header';
 // Hooks
 import { useDispatch, useSelector } from 'react-redux'
 
-
 // Action Creators
 import { getIncidents } from './store/actions/incidents.actions';
 
 
 function App() {
   const {
-    infoDialog: {
-      open,
-      content,
-      coordinates
-    },
     incidents: {
       loading,
       error,
       data
     }
   } = useSelector(state => state);
-  const state = useSelector(state => state);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    console.log('state', state)
-  }, [state])
 
   useEffect(() => {
     if (!data && !loading && !error) {

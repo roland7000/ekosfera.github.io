@@ -1,6 +1,6 @@
 // Common
 import React from 'react';
-import Filter from '../../components/Filters'
+import Filter from '../../components/filters'
 
 // Components
 import Map from '../../components/MapWithCluster';

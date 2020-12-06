@@ -2,7 +2,7 @@
   "name": "ekosfera.github.io",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://pvolodymyr.github.io/ekosfera.github.io/",
+  "homepage": "./",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -25,6 +25,7 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "supercluster": "^7.1.0",
     "swr": "^0.3.1",
     "use-supercluster": "^0.2.8",
     "validate.js": "^0.13.1"

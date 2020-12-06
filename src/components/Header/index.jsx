@@ -30,16 +30,18 @@ function Header() {
   return (
     <div className={styles['header_wrapper']}>
       <div className={styles['header']}>
-        <img
-          className={styles['logo']}
-          src={imagePath}
-          alt="logo"
-        />
+        <a href="https://ekosphera.org/" className={styles['link']}>
+          <img
+            className={styles['logo']}
+            src={imagePath}
+            alt="logo"
+          />
+        </a>
         <LangiageSwitcher />
         <div className={cx({
-            [styles['header_menu']]: true,
-            [styles['header_menu--is-open']]: isMenuOpen,
-          })}>
+          [styles['header_menu']]: true,
+          [styles['header_menu--is-open']]: isMenuOpen,
+        })}>
           <ul className={styles['header_menu_list']}>
             {/* <li onClick={handleCloseMenu}>{t('Sponsors')}</li> */}
           </ul>

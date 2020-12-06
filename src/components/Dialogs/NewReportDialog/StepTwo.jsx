@@ -35,8 +35,6 @@ const StepTwo = () => {
     handleMapChange(latlng)
   }
 
-  console.log('mapCenter', mapCenter)
-
   return (
     <div className={cx(styles['form'])}>
       <div className={styles['form_body']}>
