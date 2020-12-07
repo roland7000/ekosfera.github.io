@@ -13,7 +13,10 @@ export const getIncidents = () => dispatch => {
   })
 
   API.get(URL_INCIDENTS, {
-    headers: {"Access-Control-Allow-Origin": "*"}
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    }
   })
     .then(response => response && response.data)
     .then(data => dispatch({

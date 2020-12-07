@@ -26,7 +26,10 @@ export const getAboutUsData = () => dispatch => {
     })
 
   API.get(url, {
-    headers: {"Access-Control-Allow-Origin": "*"}
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    }
   })
     .then(response => response && response.data && response.data.content)
     .then(data => dispatch({

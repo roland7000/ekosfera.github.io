@@ -13,7 +13,10 @@ export const getTags = () => dispatch => {
   })
 
   API.get(URL_TAGS, {
-    headers: {"Access-Control-Allow-Origin": "*"}
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+    }
   })
     .then(response => response.data)
     .then(data => dispatch({

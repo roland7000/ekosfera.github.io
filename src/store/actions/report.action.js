@@ -125,7 +125,8 @@ export const formPostReport = postData => dispatch => {
   API.post('/incidents', postData, {
     headers: {
       'Content-Type': 'application/json',
-      "Access-Control-Allow-Origin": "*"
+      "Access-Control-Allow-Origin": "*",
+      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
     }
   })
     .then(response => response && response.data)
