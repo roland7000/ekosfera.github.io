@@ -14,7 +14,7 @@ export const getIncidents = () => dispatch => {
 
   API.get(URL_INCIDENTS, {
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "https://ekosphera.work/*",
       'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
     }
   })

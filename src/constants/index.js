@@ -1,6 +1,6 @@
 export const GOOGLE_MAPS_API = process.env.REACT_APP_GOOGLE_KEY;
 export const DATA_URL = 'https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10';
-export const BASE_URL = ' https://ekosphera.work';
+export const BASE_URL = 'https://ekosphera.work';
 export const URL_INCIDENTS = '/incidents';
 export const URL_ABOUT_US_EN = '/info-en';
 export const URL_ABOUT_US_UA = '/info-ua';
