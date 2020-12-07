@@ -12,7 +12,9 @@ export const getIncidents = () => dispatch => {
     type: GET_INCIDENTS_LOADING
   })
 
-  API.get(URL_INCIDENTS)
+  API.get(URL_INCIDENTS, {
+    headers: {"Access-Control-Allow-Origin": "*"}
+  })
     .then(response => response && response.data)
     .then(data => dispatch({
       type: GET_INCIDENTS_COMPLETE,
