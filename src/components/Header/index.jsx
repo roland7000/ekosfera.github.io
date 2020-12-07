@@ -6,26 +6,34 @@ import imagePath from '../../assets/logo.png';
 
 // Hooks
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Components
 import Button from '../Button';
 import LangiageSwitcher from '../LangiageSwitcher';
 
 // Action Creators
-import { setNewReportDialogOpen } from '../../store/actions/newReportDialog.actions';
+import { setNewReportDialogOpen, setNewReportDialogClosed } from '../../store/actions/newReportDialog.actions';
+import { toggleAboutUsDialog } from '../../store/actions/aboutUs.actions';
 
 function Header() {
   const [t] = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const store = useSelector(store => store)
   const dispatch = useDispatch();
 
   const handleOpenReportDialog = () => {
     setIsMenuOpen(false)
     dispatch(setNewReportDialogOpen())
   }
+
+  const handleOpenAboutUsDialog = () => {
+    setIsMenuOpen(false)
+    dispatch(setNewReportDialogClosed())
+    dispatch(toggleAboutUsDialog(true))
+  }
+
   const handleOpenMenu = () => setIsMenuOpen(!isMenuOpen)
-  // const handleCloseMenu = () => setIsMenuOpen(false)
 
   return (
     <div className={styles['header_wrapper']}>
@@ -37,20 +45,20 @@ function Header() {
             alt="logo"
           />
         </a>
-        <LangiageSwitcher />
+        {/* <LangiageSwitcher /> */}
         <div className={cx({
           [styles['header_menu']]: true,
           [styles['header_menu--is-open']]: isMenuOpen,
         })}>
-          <ul className={styles['header_menu_list']}>
-            {/* <li onClick={handleCloseMenu}>{t('Sponsors')}</li> */}
-          </ul>
           <Button
             className={styles['header_menu_list_button']}
             handleClick={handleOpenReportDialog}
           >
             {t('Submit a new report')}
           </Button>
+          <ul className={styles['header_menu_list']}>
+            <li onClick={handleOpenAboutUsDialog}>{t('About us')}</li>
+          </ul>
         </div>
         <button
           className={styles['header_menu_button']}
