@@ -27,7 +27,7 @@ export const getAboutUsData = () => dispatch => {
 
   API.get(url, {
     headers: {
-      "Access-Control-Allow-Origin": "https://ekosphera.work/*",
+      "Access-Control-Allow-Origin": "*",
       'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
     }
   })

@@ -14,7 +14,7 @@ export const getTags = () => dispatch => {
 
   API.get(URL_TAGS, {
     headers: {
-      "Access-Control-Allow-Origin": "https://ekosphera.work/*",
+      "Access-Control-Allow-Origin": "*",
       'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
     }
   })
