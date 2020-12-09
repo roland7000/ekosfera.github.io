@@ -1,4 +1,3 @@
-
 import {
   SET_DETAILS_DIALOG_OPEN,
   SET_DETAILS_DIALOG_CLOSED,
@@ -6,7 +5,6 @@ import {
 } from '../../constants';
 
 export const setDetailsDialogOpen = () => dispatch => {
-  console.log('SET_DETAILS_DIALOG_OPEN')
   dispatch({
     type: SET_DETAILS_DIALOG_OPEN
   })

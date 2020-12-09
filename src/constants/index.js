@@ -1,7 +1,9 @@
 export const GOOGLE_MAPS_API = process.env.REACT_APP_GOOGLE_KEY;
 export const DATA_URL = 'https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10';
-export const BASE_URL = ' https://ekosphera.work';
+export const BASE_URL = 'https://ekosphera.work';
 export const URL_INCIDENTS = '/incidents';
+export const URL_ABOUT_US_EN = '/info-en';
+export const URL_ABOUT_US_UA = '/info-ua';
 export const URL_TAGS = '/descriptor-tags';
 export const URL_POST_PHOTOS = '/upload';
 export const URL_POST_REPORT = '/content-manager/explorer/application::incident.incident';
@@ -60,6 +62,11 @@ export const FORM_SET_IMAGES_URLS_ERROR = 'FORM:SET_IMAGES_URL_ERROR';
 export const FORM_SET_NAME_ERROR = 'FORM:SET_NAME_ERROR';
 export const FORM_SET_EMAIL_ERROR = 'FORM:SET_EMAIL_ERROR';
 export const FORM_DELETE_IMAGE_URL = 'FORM:DELETE_IMAGE_URL';
+
+export const ABOUT_US_GET_DATA_LOADING = 'ABOUT_US:GET_DATA_LOADING';
+export const ABOUT_US_GET_DATA_COMPLETE = 'ABOUT_US:GET_DATA_COMPLETE';
+export const ABOUT_US_GET_DATA_ERROR = 'ABOUT_US:GET_DATA_ERROR';
+export const ABOUT_US_DIALOG_TOGGLE = 'ABOUT_US_DIALOG_TOGGLE';
 
 // Images
 export const IMAGE_PERCENTAGE_DIFFERENCE = 10;

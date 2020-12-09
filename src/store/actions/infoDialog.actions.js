@@ -17,7 +17,6 @@ export const setInfoDialogClosed = () => dispatch =>
   })
 
 export const setInfoDialogContent = content => dispatch => {
-  console.log('setINFODialogContent', content)
   dispatch({
     type: SET_INFO_DIALOG_CONTENT,
     payload: content

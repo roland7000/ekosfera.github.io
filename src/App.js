@@ -10,35 +10,25 @@ import InfoDialog from './components/Dialogs/InfoDialog';
 import DetailsDialog from './components/Dialogs/DetailsDialog';
 import ReportDialog from './components/Dialogs/NewReportDialog/index';
 import ImagesDialog from './components/Dialogs/ImagesDialog/index';
+import AboutUsDialog from './components/Dialogs/AboutUsDialog';
 import Header from './components/Header';
+import PartnerLogo from './components/PartnerLogo';
 
 // Hooks
 import { useDispatch, useSelector } from 'react-redux'
 
-
 // Action Creators
 import { getIncidents } from './store/actions/incidents.actions';
 
-
 function App() {
   const {
-    infoDialog: {
-      open,
-      content,
-      coordinates
-    },
     incidents: {
       loading,
       error,
       data
     }
   } = useSelector(state => state);
-  const state = useSelector(state => state);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    console.log('state', state)
-  }, [state])
 
   useEffect(() => {
     if (!data && !loading && !error) {
@@ -54,6 +44,8 @@ function App() {
       <DetailsDialog />
       <ReportDialog />
       <ImagesDialog />
+      <AboutUsDialog />
+      <PartnerLogo />
     </div>
   );
 }

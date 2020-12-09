@@ -89,7 +89,10 @@ const formPostPhoto = image => dispatch => {
   formData.append('files', image.file);
 
   return API.post(URL_POST_PHOTOS, formData, {
-    headers: { 'Content-Type': 'multipart/form-data' }
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      "Access-Control-Allow-Origin": "*"
+    }
   })
     .then(response => response && response.data && response.data[0])
     .catch(error => dispatch({
@@ -127,9 +130,10 @@ export const formPostReport = postData => dispatch => {
     .then(response => response && response.data)
     .then(data => {
       dispatch({
-      type: FORM_GET_SUBMIT_COMPLETE,
-      payload: data
-    })})
+        type: FORM_GET_SUBMIT_COMPLETE,
+        payload: data
+      })
+    })
     .catch(error => dispatch({
       type: FORM_GET_SUBMIT_ERROR,
       payload: error

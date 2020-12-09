@@ -79,48 +79,49 @@ function MapWithCluster() {
   }
 
   return (
-    <Map
-      handleChange={handleMapChange}
-      className={styles.map}
-    >
-      {
-        clusters && clusters.length && clusters.map(({
-          geometry: {
-            coordinates = []
-          },
-          properties,
-          id: clusterId
-        }) => {
-          const [longitude, latitude] = coordinates;
-          const styles = {
-            height: '30px',
-            width: '30px'
-          };
-          const {
-            point_count: pointsCount,
-            cluster: isCluster,
-            incidentsId,
-            damageValue,
-            damageMeasure,
-            status
-          } = properties;
+    <div className={styles.map}>
+      <Map
+        handleChange={handleMapChange}
+      >
+        {
+          clusters && clusters.length && clusters.map(({
+            geometry: {
+              coordinates = []
+            },
+            properties,
+            id: clusterId
+          }) => {
+            const [longitude, latitude] = coordinates;
+            const styles = {
+              height: '30px',
+              width: '30px'
+            };
+            const {
+              point_count: pointsCount,
+              cluster: isCluster,
+              incidentsId,
+              damageValue,
+              damageMeasure,
+              status
+            } = properties;
 
-          const markerValue = damageValue ? `${damageValue} ${damageMeasure}` : ''
-          const val = isCluster ? pointsCount : markerValue
+            const markerValue = damageValue ? `${damageValue} ${damageMeasure}` : ''
+            const val = isCluster ? pointsCount : markerValue
 
-          return <MapMarker
-            key={longitude + latitude + (isCluster ? clusterId : incidentsId)}
-            incidentsId={incidentsId}
-            isCluster={isCluster}
-            lat={latitude}
-            lng={longitude}
-            value={val}
-            style={styles}
-            isCompleted={status === "CLOSED_SUCCESS"}
-          />
-        })
-      }
-    </Map>
+            return <MapMarker
+              key={longitude + latitude + (isCluster ? clusterId : incidentsId)}
+              incidentsId={incidentsId}
+              isCluster={isCluster}
+              lat={latitude}
+              lng={longitude}
+              value={val}
+              style={styles}
+              isCompleted={status === "CLOSED_SUCCESS"}
+            />
+          })
+        }
+      </Map>
+    </div>
   );
 }
 

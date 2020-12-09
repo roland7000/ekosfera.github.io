@@ -24,6 +24,7 @@
   }
   &_menu {
     display: flex;
+    margin-left: auto;
     
     @media only screen and (max-width: 768px) {
       flex-direction: column;
@@ -52,8 +53,8 @@
       flex-direction: column;
       border: 0;
       padding: 0;
-      margin-left: 40px;
       flex-shrink: 0;
+      margin-left: auto;
 
       @media only screen and (min-width: 769px) {
         display: none;
@@ -72,7 +73,12 @@
       align-items: center;
       list-style-type: none;
       padding: 0;
-      margin: 0 20px 0 auto;
+      margin: 0 auto;
+
+      @media only screen and (min-width: 768px) {
+        margin-left: 40px;
+        margin-right: 20px;
+      }
 
       li {
         padding: 0 18px;
@@ -107,4 +113,10 @@
 
   @media only screen and (max-width: 768px) {
   }
+}
+
+
+.partner {
+  display: inline-flex;
+  margin-left: 10px;
 }

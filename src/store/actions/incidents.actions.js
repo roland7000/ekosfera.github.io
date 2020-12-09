@@ -7,18 +7,6 @@ import {
   GET_INCIDENTS_ERROR
 } from '../../constants';
 
-// TODO: remove this after new API comes...
-const addRandomeDamageValue = list => list.map(
-  (item, index) => ({
-    ...item,
-    damage: {
-      id: index,
-      measure: 'arces',
-      value: Math.random() * Math.random() * Math.random() * 10000000
-    }
-  })
-)
-
 export const getIncidents = () => dispatch => {
   dispatch({
     type: GET_INCIDENTS_LOADING
