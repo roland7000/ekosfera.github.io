@@ -12,12 +12,7 @@ export const getTags = () => dispatch => {
     type: GET_TAGS_LOADING
   })
 
-  API.get(URL_TAGS, {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
-    }
-  })
+  API.get(URL_TAGS)
     .then(response => response.data)
     .then(data => dispatch({
       type: GET_TAGS_COMPLETE,

@@ -25,12 +25,7 @@ export const getAboutUsData = () => dispatch => {
       type: ABOUT_US_GET_DATA_LOADING
     })
 
-  API.get(url, {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-    }
-  })
+  API.get(url)
     .then(response => response && response.data && response.data.content)
     .then(data => dispatch({
       type: ABOUT_US_GET_DATA_COMPLETE,

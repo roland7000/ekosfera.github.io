@@ -12,12 +12,7 @@ export const getIncidents = () => dispatch => {
     type: GET_INCIDENTS_LOADING
   })
 
-  API.get(URL_INCIDENTS, {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-    }
-  })
+  API.get(URL_INCIDENTS)
     .then(response => response && response.data)
     .then(data => dispatch({
       type: GET_INCIDENTS_COMPLETE,
